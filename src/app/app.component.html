@@ -1,7 +1,7 @@
 <div class="main-wrapper">
-  <app-header></app-header>
+  <app-header (navItemSelected)="onNavigate($event)"></app-header>
   <div class="body-wrap">
-      <app-recipes></app-recipes>
-      <app-shopping-list></app-shopping-list>
+      <app-recipes *ngIf="activeMenu === 'recipe'"></app-recipes>
+      <app-shopping-list *ngIf="activeMenu === 'shopping-list'"></app-shopping-list>
   </div>
 </div>
