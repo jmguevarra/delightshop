@@ -3,22 +3,8 @@
 </div>
 <hr>
 <div class="recipe-item-list">
-    <a 
-        href="#" 
-        class="list-group-item clearfix" 
-        *ngFor="let recipe of recipes">
-        <div class="row">
-            <div class="col-md-3">
-                <img 
-                [src]="recipe.imagePath" 
-                [alt]=" recipe.name" 
-                class="img-responsive recipe-img">
-            </div>
-            <div class="col-md-9">
-                <h4 class="list-group-item-heading">{{ recipe.name }}</h4>
-                <p class="list-group-item-text"> {{ recipe.description }} </p>
-            </div>
-        </div>
-    </a>
-    <app-recipe-item></app-recipe-item>
+    <app-recipe-item 
+        *ngFor="let recipeListItem of recipes"
+        [recipe] = 'recipeListItem'
+    ></app-recipe-item>
 </div>
