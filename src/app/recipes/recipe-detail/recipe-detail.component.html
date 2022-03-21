@@ -1,7 +1,7 @@
 <div class="recipe-detail-pane">
     <div class="recipe-item-detail">
-        <img src="" alt="Recipe Image">
-        <h2 class="recipe-detail-name">Recipe Name</h2>
+        <img [src]="recipeDetail.imagePath" [alt]="recipeDetail.name">
+        <h2 class="recipe-detail-name">{{ recipeDetail.name }}</h2>
     </div>
     <div class="recipe-item-actions">
         <div class="btn-group">
@@ -14,7 +14,7 @@
         </div>
     </div>
     <div class="recipe-item-other-details">
-        <p>Description</p>
+        <p>{{ recipeDetail.description }}</p>
         <hr>
         <h4>Ingredients: </h4>
         <ul class="ingredients list-group">
