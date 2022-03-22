@@ -1,4 +1,4 @@
-import { Directive, HostListener, Renderer2, HostBinding, ElementRef} from '@angular/core';
+import { Directive, HostListener, Renderer2, ElementRef} from '@angular/core';
 
 @Directive({
   selector: '[appDropdown]'
@@ -8,15 +8,14 @@ export class DropdownDirective{
   hostEl = this.elementRef.nativeElement;
   constructor(private elementRef:ElementRef, private renderer: Renderer2) {}
 
-  ngOnInit(): void {
-    // this.renderer.listen(this.hostEl.parentNode, 'mouseleave', function(){
-    //   this.isOpen = !this.isOpen;
-    //   this.renderer.removeClass(this.hostEl.nextSibling, 'show');
-    // });
+  @HostListener('click', ['$event']) onToggleClass(event: Event){
+    event.stopPropagation(); //preventing to click the document
+    this.toggleClass(); 
   }
 
-  @HostListener('click') onToggleClass(){
-    this.toggleClass(); 
+  @HostListener('document:click', ['$event']) onDocToggleClass(event: Event){
+    this.isOpen = false;
+    this.renderer.removeClass(this.hostEl.nextSibling, 'show');
   }
   
   
