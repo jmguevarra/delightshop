@@ -32,6 +32,7 @@ export class ShoppingEditComponent implements OnInit, OnChanges {
     const elAmountValue = this.amountInputEl.nativeElement.value;
     const newIngredient = new Ingredient(elNameValue, elAmountValue);
     this.ingredientAdded.emit(newIngredient);
+    this.clearInputs();
   }
 
   onDelItem(){
