@@ -6,7 +6,7 @@
                     (slctRecipeItem) = "slctRecipe = $event">
                 </app-recipe-list>
             </div>
-            <div class="col-md-7">s
+            <div class="col-md-7">
                 <app-recipe-detail *ngIf="slctRecipe; else noSelectedRecipe" [recipeDetail]="slctRecipe"></app-recipe-detail>
                 <ng-template #noSelectedRecipe>
                     <p>Please select Recipe</p>
