@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { Recipe } from '../recipe.model';
+import { RecipeService } from '../recipe.service';
 
 @Component({
   selector: 'app-recipe-list',
@@ -7,18 +8,12 @@ import { Recipe } from '../recipe.model';
   styleUrls: ['./recipe-list.component.css']
 })
 export class RecipeListComponent implements OnInit {
-  @Output() slctRecipeItem = new EventEmitter<Recipe>();
-  recipes: Recipe[]  = [
-    new Recipe('Chicken Adobo', 'Filipino dish cooked with soy souce.', 'https://www.knorr.com/content/dam/unilever/global/recipe_image/214/21436/214369-default.jpg/_jcr_content/renditions/cq5dam.web.500.330.jpeg'), 
-    new Recipe('Chicken Tinola', 'This clear broth uses the rich flavors of chicken mixed with the strong and aromatic flavors of ginger to create a broth the relaxes and refreshes the soul.', 'https://www.knorr.com/content/dam/unilever/global/recipe_image/110/11027/110276-default.jpg/_jcr_content/renditions/cq5dam.web.500.330.jpeg'), 
-    new Recipe('Ginisang Monggo', 'This thick, hearty and healthy dish combines the savory and fresh flavors of monggo beans, mixed with the crispy textures of the pork crunch', 'https://www.knorr.com/content/dam/unilever/global/recipe_image/175/17548/175486-default.jpg/_jcr_content/renditions/cq5dam.web.500.330.jpeg'), 
-  ];
+  recipes: Recipe[];
 
-  constructor() { }
+  constructor(private recipeService: RecipeService) { }
 
-  ngOnInit(): void {}
-
-  onRecipeWasSelected(recipe: Recipe){
-    this.slctRecipeItem.emit(recipe);
+  ngOnInit(): void {
+    this.recipes = this.recipeService.getRecipes();
   }
+
 }

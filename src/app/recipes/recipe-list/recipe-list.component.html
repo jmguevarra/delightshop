@@ -6,6 +6,5 @@
     <app-recipe-item 
         *ngFor="let recipeListItem of recipes"
         [recipe] = 'recipeListItem'
-        (emitSelectedRecipe) = "onRecipeWasSelected(recipeListItem)"
     ></app-recipe-item>
 </div>
