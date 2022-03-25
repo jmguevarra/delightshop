@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { Ingredient } from '../shared/ingredients.model';
+import { IngredientService } from './ingredient.service';
 
 @Component({
   selector: 'app-shopping-list',
@@ -7,22 +8,15 @@ import { Ingredient } from '../shared/ingredients.model';
   styleUrls: ['./shopping-list.component.css']
 })
 export class ShoppingListComponent implements OnInit {
-  selectedIngredient: Ingredient;
-  ingredients: Ingredient[] = [
-    new Ingredient('Toyo', 5),
-    new Ingredient('Suka', 12),
-    new Ingredient('Chicken', 160),
-    new Ingredient('Papaya', 50),
-  ];
-
-  constructor() {}
-  ngOnInit(): void { }
-
-  onIngredientAdded(ingredient: Ingredient){
-    this.ingredients.push(ingredient);
+  ingredients: Ingredient[] = [];
+  
+  constructor(private ingredientService: IngredientService) {}
+  ngOnInit(): void {
+    this.ingredients = this.ingredientService.getIngredients();
+    this.ingredientService.ingredientChanged.subscribe((ingredient: Ingredient[])=>{
+      this.ingredients = ingredient;
+    });
   }
-
-  clearShopList(){ this.ingredients = []; }
 
   selectedItem(item: Ingredient, ingredientTag){
     const allShopList =  document.querySelectorAll('.shopping-list .list-group-item');
@@ -30,14 +24,7 @@ export class ShoppingListComponent implements OnInit {
       tag.classList.remove('active');
     });
     ingredientTag.classList.add('active');
-    this.selectedIngredient = item;
-  }
-
-  delListItem(itemToDel: Ingredient){
-    const filteredItem =  this.ingredients.filter(function(value, index, arr){
-        return itemToDel !== value;
-    });
-    this.ingredients = filteredItem;
+    this.ingredientService.selectedIngredient.emit(item);
   }
 
 }

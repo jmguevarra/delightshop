@@ -18,17 +18,16 @@ export class RecipesComponent implements OnInit{
    
 
   ngOnInit(): void {
-    /** 
-     * Data Binding Working in View Component
-     */
+
+    //Data Binding Working in View Component
     this.recipeService.selectedRecipe.subscribe((recipe: Recipe) => {
       this.slctRecipe = recipe;
     });
 
-    /** Data Binding not working in View Component*/
-    this.recipeService.selectedRecipe.subscribe(function(recipe: Recipe){
-     this.slctRecipe = recipe;
-    });
+    //Data Binding not working in View Component
+    // this.recipeService.selectedRecipe.subscribe(function(recipe: Recipe){
+    //  this.slctRecipe = recipe;
+    // });
   }
 
 }
