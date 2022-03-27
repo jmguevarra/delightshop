@@ -8,8 +8,6 @@ export class IngredientService{
     private ingredients: Ingredient[] = [
         new Ingredient('Toyo', 5),
         new Ingredient('Suka', 12),
-        new Ingredient('Chicken', 160),
-        new Ingredient('Papaya', 50),
     ];
 
     getIngredients(){
@@ -18,6 +16,10 @@ export class IngredientService{
 
     addIngredient(ingredient: Ingredient){
         this.ingredients.push(ingredient);
+        this.ingredientChanged.emit(this.ingredients.slice());
+    }
+    addIngredients(ingredient: Ingredient[]){
+        this.ingredients.push(...ingredient);
         this.ingredientChanged.emit(this.ingredients.slice());
     }
 
