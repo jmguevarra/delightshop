@@ -7,9 +7,9 @@
         <div class="dropdown">
             <button type="button" appDropdown class="btn btn-primary dropdown-toggle">Manage Recipe <span class="caret"></span></button>
             <ul class="dropdown-menu">
-                <li class="dropdown-item"><a class="nav-link" href="#" (click)="addtoIngredient(recipeDetail.ingredients)">To Shopping List</a></li>
-                <li class="dropdown-item"><a class="nav-link" href="#">Edit Recipe</a></li>
-                <li class="dropdown-item"><a class="nav-link" href="#">Delete Recipe</a></li>
+                <li class="dropdown-item"><a class="nav-link" (click)="addtoIngredient(recipeDetail.ingredients)">To Shopping List</a></li>
+                <li class="dropdown-item"><a class="nav-link">Edit Recipe</a></li>
+                <li class="dropdown-item"><a class="nav-link">Delete Recipe</a></li>
             </ul>
         </div>
     </div>

@@ -2,3 +2,6 @@
 .nav-item a.active {
     color: cornflowerblue !important;
 }
+a{
+    cursor: pointer;
+}
