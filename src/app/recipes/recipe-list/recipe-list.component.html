@@ -4,7 +4,8 @@
 <hr>
 <div class="recipe-item-list">
     <app-recipe-item 
-        *ngFor="let recipeListItem of recipes"
+        *ngFor="let recipeListItem of recipes; let i = index"
         [recipe] = 'recipeListItem'
+        [index] = 'i'
     ></app-recipe-item>
 </div>
