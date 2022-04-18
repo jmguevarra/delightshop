@@ -7,9 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'delightshop';
-  activeMenu = 'recipe';
 
   onNavigate(selectedNavItem: string){
-    this.activeMenu = selectedNavItem;
+  
   }
 }
