@@ -1,5 +1,4 @@
 import { Component, OnInit, AfterViewChecked} from '@angular/core';
-import { Recipe } from './recipe.model';
 import { RecipeService } from './recipe.service';
 
 
@@ -10,9 +9,7 @@ import { RecipeService } from './recipe.service';
   providers: [RecipeService]
 })
 export class RecipesComponent implements OnInit{
-  slctRecipe: Recipe;
-
-  constructor(private recipeService: RecipeService) {
+  constructor() {
     
    }
    
@@ -20,9 +17,9 @@ export class RecipesComponent implements OnInit{
   ngOnInit(): void {
 
     //Data Binding Working in View Component
-    this.recipeService.selectedRecipe.subscribe((recipe: Recipe) => {
-      this.slctRecipe = recipe;
-    });
+    // this.recipeService.selectedRecipe.subscribe((recipe: Recipe) => {
+    //   this.slctRecipe = recipe;
+    // });
 
     //Data Binding not working in View Component
     // this.recipeService.selectedRecipe.subscribe(function(recipe: Recipe){
