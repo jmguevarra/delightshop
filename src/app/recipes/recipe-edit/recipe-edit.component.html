@@ -3,16 +3,16 @@
         <div class="form-actions row py-3">
             <div class="col-md-10">
                 <input  [disabled]="!recipeForm.valid" type="submit" class="btn btn-success me-2" value="Save">
-                <input type="button" class="btn btn-danger" value="Cancel">
+                <input  (click)="onCancel()" type="button" class="btn btn-danger" value="Cancel">
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-10">
                 <div class="form-group mb-1">
-                    <img src="" alt="recipe Image"><br>
+                    <img [src]="imagePath.value" alt="recipe Image" style="width: 100%;"><br>
                     <label for="imagePath">Image URL: </label>
-                    <input class="form-control" type="text" formControlName="recipeImagePath" id="imagePath">
+                    <input class="form-control" type="text" formControlName="recipeImagePath" id="imagePath" #imagePath>
                 </div>
                 <div class="form-group mb-1">
                     <label for="recipeName">Name: </label>
