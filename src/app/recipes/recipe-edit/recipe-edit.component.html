@@ -2,7 +2,7 @@
     <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
         <div class="form-actions row py-3">
             <div class="col-md-10">
-                <input type="submit" class="btn btn-success me-2" value="Save">
+                <input  [disabled]="!recipeForm.valid" type="submit" class="btn btn-success me-2" value="Save">
                 <input type="button" class="btn btn-danger" value="Cancel">
             </div>
         </div>
