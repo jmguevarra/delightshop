@@ -1,5 +1,6 @@
-import { Component, EventEmitter, OnInit} from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
 
@@ -8,13 +9,14 @@ import { RecipeService } from '../recipe.service';
   templateUrl: './recipe-list.component.html',
   styleUrls: ['./recipe-list.component.css']
 })
-export class RecipeListComponent implements OnInit {
+export class RecipeListComponent implements OnInit, OnDestroy {
   recipes: Recipe[];
+  subscription: Subscription;
 
   constructor(private recipeService: RecipeService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.recipeService.recipeChanged.subscribe((recipes: Recipe[])=>{
+    this.subscription = this.recipeService.recipeChanged.subscribe((recipes: Recipe[])=>{
       this.recipes = recipes;
     });
     this.recipes = this.recipeService.getRecipes();
@@ -23,6 +25,10 @@ export class RecipeListComponent implements OnInit {
   addNewRecipe(){
     //this.router.navigate(['/new']);  //absolute path but having a problem once you have subpage or url pages.
     this.router.navigate(['new'], {relativeTo: this.route }); //relative action 
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
 }

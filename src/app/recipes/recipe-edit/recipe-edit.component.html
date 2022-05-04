@@ -35,7 +35,7 @@
                             <input type="text" class="form-control" id="recipeIngredientAmount" formControlName="ingAmount">
                         </div>
                         <div class="col-md-2">
-                            <input type="button" value="Delete" class="btn btn-danger">
+                            <input (click)="onDeleteIngredient(iControl)" type="button" value="Delete" class="btn btn-danger" >
                         </div>
                     </div>
                 </div>
