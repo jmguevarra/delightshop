@@ -1,8 +1,10 @@
+import { Subject } from "rxjs";
 import { Ingredient } from "../shared/ingredients.model";
 import { Recipe } from "./recipe.model";
 
 export class RecipeService{
-    
+    recipeChanged = new Subject<Recipe[]>();
+
     private recipes:Recipe[] = [
         new Recipe(
             'Chicken Adobo', 
@@ -47,5 +49,15 @@ export class RecipeService{
     }
     getRecipe(id: number){
         return this.recipes[id];
+    }
+
+    addRecipe(recipe: Recipe){
+        this.recipes.push(recipe);
+        this.recipeChanged.next(this.recipes.slice());
+    }   
+
+    updateRecipe(index: number, updatedRecipe: Recipe){
+        this.recipes[index] = updatedRecipe;
+        this.recipeChanged.next(this.recipes.slice());
     }
 }

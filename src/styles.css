@@ -5,3 +5,8 @@
 a{
     cursor: pointer;
 }
+
+form.ng-touched textarea.ng-invalid,
+form.ng-touched input.ng-invalid{
+    border: 1px solid red;
+}
